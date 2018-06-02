@@ -1,0 +1,47 @@
+<input type="text" [(ngModel)]="characterURL">
+<button type="button" (click)="onClick()">追加</button>
+<br/>
+<table>
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th>Lv.</th>
+            <th>HP</th>
+            <th>MP</th>
+            <th>器用B</th>
+            <th>敏捷B</th>
+            <th>筋力B</th>
+            <th>生命B</th>
+            <th>知力B</th>
+            <th>精神B</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let character of charactersList">
+            <td>{{character.data_title}}</td>
+            <td>{{character.lv}}</td>
+            <td>{{character.HP}}</td>
+            <td>{{character.MP}}</td>
+            <td>{{character.NB1}}</td>
+            <td>{{character.NB2}}</td>
+            <td>{{character.NB3}}</td>
+            <td>{{character.NB4}}</td>
+            <td>{{character.NB5}}</td>
+            <td>{{character.NB6}}</td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="average">
+        <tr>
+            <td>平均</td>
+            <td>{{average.lv}}</td>
+            <td>{{average.HP}}</td>
+            <td>{{average.MP}}</td>
+            <td>{{average.NB1}}</td>
+            <td>{{average.NB2}}</td>
+            <td>{{average.NB3}}</td>
+            <td>{{average.NB4}}</td>
+            <td>{{average.NB5}}</td>
+            <td>{{average.NB6}}</td>
+        </tr>
+    </tfoot>
+</table>
