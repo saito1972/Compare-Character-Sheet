@@ -5,3 +5,8 @@ table {
 table th, table td {
     border: solid 1px black;
 }
+
+textarea {
+    width: 600px;
+    height: 150px;
+}

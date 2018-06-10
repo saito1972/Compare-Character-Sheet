@@ -12,6 +12,10 @@ class Average {
   'NB4': number;
   'NB5': number;
   'NB6': number;
+  'used_exp': number;
+  'now_exp': number;
+  'money': number;
+  'price_all_sum': number;
 }
 
 @Component({
@@ -21,13 +25,9 @@ class Average {
 })
 export class CharactersComponent implements OnInit {
 
-  // characterURLsList: string[] = [''];
-
-  characterURL: string;
+  characterURLs: string;
 
   charactersList: Character[] = [];
-
-
 
   average: Average;
 
@@ -37,12 +37,23 @@ export class CharactersComponent implements OnInit {
 
   }
 
-  onClick(): void {
-    this.addCharactersList(this.characterURL);
+  async onClick() {
+    const urls = this.characterURLs.split(/\r\n|\r|\n/);
+    console.log(urls);
+    for (let i = 0; i < urls.length; i++) {
+      await this.addCharactersList(urls[i]);
+    }
 
+
+
+    // this.characterURLs.split('[\r\n]').map(async (url) => {
+    //   const hoge = await this.addCharactersList(url);
+    //   console.log(hoge);
+    // });
   }
 
-  addCharactersList(characterURL): void {
+  async addCharactersList(characterURL) {
+    // console.log(characterURL);
     this.characterService.getCharacter(characterURL)
       .subscribe(character => {
         this.charactersList.push(character);
@@ -63,6 +74,10 @@ export class CharactersComponent implements OnInit {
         'NB4': Number(x['NB4']) + Number(y['NB4']),
         'NB5': Number(x['NB5']) + Number(y['NB5']),
         'NB6': Number(x['NB6']) + Number(y['NB6']),
+        'used_exp': Number(x['used_exp']) + Number(y['used_exp']),
+        'now_exp': Number(x['now_exp']) + Number(y['now_exp']),
+        'money': Number(x['money']) + Number(y['money']),
+        'price_all_sum': Number(x['price_all_sum']) + Number(y['price_all_sum']),
       };
     });
   }
@@ -79,6 +94,10 @@ export class CharactersComponent implements OnInit {
       'NB4': sum['NB4'] / array.length,
       'NB5': sum['NB5'] / array.length,
       'NB6': sum['NB6'] / array.length,
+      'used_exp': sum['used_exp'] / array.length,
+      'now_exp': sum['now_exp'] / array.length,
+      'money': sum['money'] / array.length,
+      'price_all_sum': sum['price_all_sum'] / array.length,
     };
 
   }

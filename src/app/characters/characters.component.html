@@ -1,4 +1,4 @@
-<input type="text" [(ngModel)]="characterURL">
+<textarea type="text" [(ngModel)]="characterURLs"></textarea>
 <button type="button" (click)="onClick()">追加</button>
 <br/>
 <table>
@@ -14,6 +14,10 @@
             <th>生命B</th>
             <th>知力B</th>
             <th>精神B</th>
+            <th>使用Exp.</th>
+            <th>現在Exp.</th>
+            <th>所持金</th>
+            <th>アイテム総計</th>
         </tr>
     </thead>
     <tbody>
@@ -28,20 +32,28 @@
             <td>{{character.NB4}}</td>
             <td>{{character.NB5}}</td>
             <td>{{character.NB6}}</td>
+            <td>{{character.used_exp}}</td>
+            <td>{{character.now_exp}}</td>
+            <td>{{character.money}}</td>
+            <td>{{character.price_all_sum}}</td>
         </tr>
     </tbody>
     <tfoot *ngIf="average">
         <tr>
             <td>平均</td>
-            <td>{{average.lv}}</td>
-            <td>{{average.HP}}</td>
-            <td>{{average.MP}}</td>
-            <td>{{average.NB1}}</td>
-            <td>{{average.NB2}}</td>
-            <td>{{average.NB3}}</td>
-            <td>{{average.NB4}}</td>
-            <td>{{average.NB5}}</td>
-            <td>{{average.NB6}}</td>
+            <td>{{average.lv | number : '1.1-1'}}</td>
+            <td>{{average.HP | number : '1.1-1'}}</td>
+            <td>{{average.MP | number : '1.1-1'}}</td>
+            <td>{{average.NB1 | number : '1.1-1'}}</td>
+            <td>{{average.NB2 | number : '1.1-1'}}</td>
+            <td>{{average.NB3 | number : '1.1-1'}}</td>
+            <td>{{average.NB4 | number : '1.1-1'}}</td>
+            <td>{{average.NB5 | number : '1.1-1'}}</td>
+            <td>{{average.NB6 | number : '1.1-1'}}</td>
+            <td>{{average.used_exp | number : '1.0-0'}}</td>
+            <td>{{average.now_exp | number : '1.0-0'}}</td>
+            <td>{{average.money | number : '1.0-0'}}</td>
+            <td>{{average.price_all_sum | number : '1.0-0'}}</td>
         </tr>
     </tfoot>
 </table>
